@@ -5,8 +5,8 @@
 
 int main(void)
 {
-  serial_init(0);
-  puts("Hello World!\n");
+  serial_init(51);
+  puts((unsigned char *)"Hello World!\n");
   while(1);
   return 0;
 }

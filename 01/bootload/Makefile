@@ -4,7 +4,7 @@ ARCH_L = atmega88p
 BINDIR = $(PREFIX)/bin
 
 AR = $(BINDIR)/avr-ar
-AS = $(BINDIR)/avra
+AS = $(BINDIR)/avr-as
 CC = $(BINDIR)/avr-gcc
 LD = $(BINDIR)/avr-ld
 NM = $(BINDIR)/avr-nm
@@ -22,12 +22,12 @@ TARGET = kzload
 
 CFLAGS = -Wall -nostdinc -nostdlib -fno-builtin -mmcu=$(ARCH_L)
 # CFLAGS += -mint32
-CFLAGS += -I.
+CFLAGS += -I. -I/usr/lib/avr/include
 # CFLAGS += -g
 CFLAGS += -O -s
 CFLAGS += -DKZLOAD
 
-LDFLAGS = -static -T ld.scr -L.
+LDFLAGS = -static -T ld.scr -L. -L/usr/lib/avr/lib
 
 all:			$(TARGET)
 
