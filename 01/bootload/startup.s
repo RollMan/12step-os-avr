@@ -1,6 +1,6 @@
-.global start
+.global _start
 .text
-start:
+_start:
 	ldi r16, 0x04
 	ldi r17, 0xff
 	OUT 0x3e, r16
