@@ -1,4 +1,4 @@
-PREFIX = /usr
+PREFIX = /usr/local/avr
 ARCH = m88p
 ARCH_L = atmega88p
 BINDIR = $(PREFIX)/bin
@@ -22,12 +22,12 @@ TARGET = kzload
 
 CFLAGS = -Wall -nostdinc -nostdlib -fno-builtin -mmcu=$(ARCH_L)
 # CFLAGS += -mint32
-CFLAGS += -I. -I/usr/lib/avr/include
+CFLAGS += -I. -I/usr/local/avr/avr/include
 # CFLAGS += -g
 CFLAGS += -O -s
 CFLAGS += -DKZLOAD
 
-LDFLAGS = -static -T ld.scr -L. -L/usr/lib/avr/lib
+LDFLAGS = -static -T ld.scr -L. -L/usr/local/avr/avr/lib
 
 all:			$(TARGET)
 

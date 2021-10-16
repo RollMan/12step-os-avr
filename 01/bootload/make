@@ -1,0 +1,3 @@
+#!/bin/sh
+IMAGE_NAME=dea82/avr-gcc-docker
+docker run --rm -it -v$(pwd):/work --workdir='/work' ${IMAGE_NAME} make $@
