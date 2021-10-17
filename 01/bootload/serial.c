@@ -3,24 +3,24 @@
 #include <avr/io.h>
 
 int serial_init(unsigned int baud){
-  UCSR0B = (1<<RXEN0) | (1<<TXEN0);
-  UCSR0C = (3<<UCSZ00);
-  UBRR0H = (unsigned char)(baud >> 8);
-  UBRR0L = (unsigned char)baud;
+  UBRRH = (unsigned char)(baud >> 8);
+  UBRRL = (unsigned char)baud;
+  UCSRC = (3<<UCSZ0) | (1<<USBS);
+  UCSRB = (1<<RXEN) | (1<<TXEN);
   return 0;
 }
 
 int serial_is_send_enable(){
-  return UCSR0A & (1<<UDRE0);
+  return UCSRA & (1<<UDRE);
 }
 
 int serial_send_byte(unsigned char data){
-  while(!(UCSR0A & (1<<UDRE0)));
-  UDR0 = data;
+  while(!(UCSRA & (1<<UDRE)));
+  UDR = data;
   return 0;
 }
 
 unsigned char USART_Receive(void){
-  while(!(UCSR0A & (1<<RXC0)));
-  return UDR0;
+  while(!(UCSRA & (1<<RXC)));
+  return UDR;
 }

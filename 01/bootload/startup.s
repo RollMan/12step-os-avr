@@ -1,10 +1,9 @@
+.include "tn2313def.inc"
 .global start
 .text
 start:
-	ldi r16, 0x04
-	ldi r17, 0xff
-	OUT 0x3e, r16
-	OUT 0x3d, r17 ; end of SRAM: 0x04ff
+	ldi r17, lo8(RAMEND)
+	OUT SPL, r17 ; end of SRAM: 0x04ff
 	rcall main
 
 exitl:

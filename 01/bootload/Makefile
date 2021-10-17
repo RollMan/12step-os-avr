@@ -1,6 +1,6 @@
 PREFIX = /usr/local/avr
-ARCH = m88p
-ARCH_L = atmega88p
+ARCH = tn2313
+ARCH_L = attiny2313
 BINDIR = $(PREFIX)/bin
 
 AR = $(BINDIR)/avr-ar
